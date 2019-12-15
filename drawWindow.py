@@ -1,4 +1,4 @@
-
+import csv
 import wx
 import mazecreator
 class Example(wx.Frame):
@@ -17,20 +17,30 @@ class Example(wx.Frame):
 
 
 
+
+
     def OnPaint(self, e):
         dc = wx.PaintDC(self)
+
+        import csv
+
+        with open('C:/Users/Gustav/Documents/GitHub/mazeCraze/maze.csv') as f:
+            reader = csv.reader(f)
+            your_list = list(reader)
 
         rowCounter = 0
         xAxis = 0;
         yAxis = 0;
-        size = 10;
-        array = mazecreator.mazecreator(size)
+        size = 33;
+        array = your_list
+
+            #mazecreator.mazecreator(size)
 
         for i in array:
             minor = i
             for x in minor:
                 print(x)
-                if x == 1:
+                if x == '1':
                     dc.SetBrush(wx.Brush('#FFFFFF'))
                 else:
                     dc.SetBrush(wx.Brush('#000000'))
@@ -48,13 +58,13 @@ class Example(wx.Frame):
 
 
 
-
 def main():
 
     app = wx.App()
     ex = Example(None)
     ex.Show()
     app.MainLoop()
+
 
 
 
