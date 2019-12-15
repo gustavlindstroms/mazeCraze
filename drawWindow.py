@@ -26,9 +26,10 @@ class Example(wx.Frame):
         array = mazecreator.mazecreator(10)
 
         for i in array:
-            minor = array[i]
+            minor = i
             for x in minor:
-                if minor[x] == '1':
+                print(x)
+                if x == 1:
                     dc.SetBrush(wx.Brush('#FFFFFF'))
                 else:
                     dc.SetBrush(wx.Brush('#000000'))
