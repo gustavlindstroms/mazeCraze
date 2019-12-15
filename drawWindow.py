@@ -1,6 +1,6 @@
 
 import wx
-
+import mazecreator
 class Example(wx.Frame):
 
     def __init__(self, *args, **kw):
@@ -16,37 +16,30 @@ class Example(wx.Frame):
         self.Centre()
 
 
+
     def OnPaint(self, e):
-
         dc = wx.PaintDC(self)
-        dc.SetPen(wx.Pen('#000000'))
 
-        dc.SetBrush(wx.Brush('#000000'))
-        dc.DrawRectangle(10, 15, 90, 60)
+        xAxis = 0;
+        yAxis = 0;
 
-        dc.SetBrush(wx.Brush('#FFFFFF'))
-        dc.DrawRectangle(130, 15, 90, 60)
+        array = mazecreator.mazecreator(10)
 
-        dc.SetBrush(wx.Brush('#000000'))
-        dc.DrawRectangle(250, 15, 90, 60)
+        for i in array:
+            minor = array[i]
+            for x in minor:
+                if minor[x] == '1':
+                    dc.SetBrush(wx.Brush('#FFFFFF'))
+                else:
+                    dc.SetBrush(wx.Brush('#000000'))
 
-        dc.SetBrush(wx.Brush('#000000'))
-        dc.DrawRectangle(10, 105, 90, 60)
 
-        dc.SetBrush(wx.Brush('#FFFFFF'))
-        dc.DrawRectangle(130, 105, 90, 60)
+                dc.DrawRectangle(xAxis, yAxis, 10, 10)
+                xAxis += 10
+                yAxis += 10
 
-        dc.SetBrush(wx.Brush('#000000'))
-        dc.DrawRectangle(250, 105, 90, 60)
 
-        dc.SetBrush(wx.Brush('#000000'))
-        dc.DrawRectangle(10, 195, 90, 60)
 
-        dc.SetBrush(wx.Brush('#FFFFFF'))
-        dc.DrawRectangle(130, 195, 90, 60)
-
-        dc.SetBrush(wx.Brush('#000000'))
-        dc.DrawRectangle(250, 195, 90, 60)
 
 
 def main():
@@ -55,6 +48,7 @@ def main():
     ex = Example(None)
     ex.Show()
     app.MainLoop()
+
 
 
 if __name__ == '__main__':
