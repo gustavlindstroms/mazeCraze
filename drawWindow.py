@@ -12,7 +12,7 @@ class Example(wx.Frame):
 
         self.Bind(wx.EVT_PAINT, self.OnPaint)
 
-        self.SetTitle("Colours")
+        self.SetTitle("MazeCraze")
         self.Centre()
 
 
@@ -20,10 +20,11 @@ class Example(wx.Frame):
     def OnPaint(self, e):
         dc = wx.PaintDC(self)
 
+        rowCounter = 0
         xAxis = 0;
         yAxis = 0;
-
-        array = mazecreator.mazecreator(10)
+        size = 10;
+        array = mazecreator.mazecreator(size)
 
         for i in array:
             minor = i
@@ -35,9 +36,14 @@ class Example(wx.Frame):
                     dc.SetBrush(wx.Brush('#000000'))
 
 
+                if rowCounter == size:
+                    yAxis += 10
+                    rowCounter = 0
+                    xAxis=0
                 dc.DrawRectangle(xAxis, yAxis, 10, 10)
                 xAxis += 10
-                yAxis += 10
+                rowCounter += 1
+
 
 
 
