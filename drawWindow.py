@@ -1,3 +1,4 @@
+import sys
 import csv
 from tkinter import Tk, Canvas, Frame, BOTH, Button
 arr = []
@@ -56,3 +57,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    a = str(sys.argv[1])
