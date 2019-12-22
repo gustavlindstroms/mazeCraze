@@ -1,18 +1,20 @@
 import random
 
 
-def addingcells(wallistu,partofmaze,unexplored):
-    if len(wallistu)==0:
+def addingcells(startcell,connections):
+    '''if len(wallistu)==0:
         return partofmaze
     newcellindex=random.randint(0,len(wallistu)-1)
     
     for i in unexplored:
         print(i)
-        if newcellindex in i and :
+        if newcellindex in i:
             for j in i.get(newcellindex):
                 wallistu.append(j)   
     
-    partofmaze.append(newcellindex)
+    partofmaze.append(newcellindex)'''
+    
+    conection=connections[startcell]
     
         
 
@@ -69,17 +71,18 @@ def mazecreator(size):
         
         dictlist.append(dictionary)
     
-    cell=(size//2,1)
+    cell=(size//2+1,1)
     wallistu=[]
     for i in dictlist:
-        print(i)
+        #print(i)
         if cell in i:
             for j in i.get(cell):
                 wallistu.append(j)
-    partofmazeu=[cell]
-    addingcells(wallistu,partofmazeu,dictlist)
+    start=cell
+    addingcells(start,dictlist)
 
-    
+    print(wallistu)
+    #print(dictlist)
     return dictlist
         
 
@@ -91,7 +94,7 @@ def printer(subject):
             string+=str(j)+' '
     
         string+='\n'
-    print(string)    
+    #print(string)    
 a=1
 b=1
         
