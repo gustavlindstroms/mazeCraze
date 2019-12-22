@@ -1,6 +1,7 @@
 import csv
 import wx
 import mazecreator
+import Tkinter
 class Example(wx.Frame):
 
     def __init__(self, *args, **kw):
@@ -21,10 +22,11 @@ class Example(wx.Frame):
 
     def OnPaint(self, e):
         dc = wx.PaintDC(self)
-
+        wx.P
+        top = Tkinter.Tk()
         import csv
 
-        with open('C:/Users/Gustav/Documents/GitHub/mazeCraze/maze.csv') as f:
+        with open('C:/Users/gusta/OneDrive/Documents/Plenissalen/mazeCraze/maze.csv') as f:
             reader = csv.reader(f)
             your_list = list(reader)
 
@@ -53,6 +55,8 @@ class Example(wx.Frame):
                 dc.DrawRectangle(xAxis, yAxis, 10, 10)
                 xAxis += 10
                 rowCounter += 1
+                button = wx.Button(self, -1)
+
 
 
 
