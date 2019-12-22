@@ -1,31 +1,23 @@
 import csv
 import wx
+import tkinter
 import mazecreator
-import Tkinter
-class Example(wx.Frame):
+from tkinter import Tk, Canvas, Frame, BOTH
 
-    def __init__(self, *args, **kw):
-        super(Example, self).__init__(*args, **kw)
+class Example(Frame):
 
-        self.InitUI()
+    def __init__(self):
+        super().__init__()
 
-    def InitUI(self):
-
-        self.Bind(wx.EVT_PAINT, self.OnPaint)
-
-        self.SetTitle("MazeCraze")
-        self.Centre()
+        self.initUI()
 
 
+    def initUI(self):
 
+        self.master.title("Shapes")
+        self.pack(fill=BOTH, expand=1)
 
-
-    def OnPaint(self, e):
-        dc = wx.PaintDC(self)
-        wx.P
-        top = Tkinter.Tk()
-        import csv
-
+        canvas = Canvas(self)
         with open('C:/Users/gusta/OneDrive/Documents/Plenissalen/mazeCraze/maze.csv') as f:
             reader = csv.reader(f)
             your_list = list(reader)
@@ -36,41 +28,39 @@ class Example(wx.Frame):
         size = 33;
         array = your_list
 
-            #mazecreator.mazecreator(size)
-
         for i in array:
             minor = i
             for x in minor:
                 print(x)
+                color = ''
                 if x == '1':
-                    dc.SetBrush(wx.Brush('#FFFFFF'))
+                    color = '#000'
                 else:
-                    dc.SetBrush(wx.Brush('#000000'))
-
+                    color = '#fff'
 
                 if rowCounter == size:
                     yAxis += 10
                     rowCounter = 0
                     xAxis=0
-                dc.DrawRectangle(xAxis, yAxis, 10, 10)
+                canvas.create_rectangle(xAxis, yAxis, xAxis+10, yAxis+10, outline=color, fill=color, width=2)
+
+                print('printed one with color ' + color)
+                color = ''
                 xAxis += 10
                 rowCounter += 1
-                button = wx.Button(self, -1)
 
-
-
-
+        canvas.pack(fill=BOTH, expand=1)
 
 
 def main():
 
-    app = wx.App()
-    ex = Example(None)
-    ex.Show()
-    app.MainLoop()
-
-
+    root = Tk()
+    ex = Example()
+    root.geometry("330x220+300+300")
+    root.mainloop()
 
 
 if __name__ == '__main__':
     main()
+
+
