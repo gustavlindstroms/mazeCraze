@@ -23,14 +23,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         Group group = new Group();
-
-        Rectangle rect = new Rectangle(20,20,200,200);
-
-        rect.setFill(Color.TRANSPARENT);
-
-        rect.setStroke(Color.BLACK);
-        group.getChildren().add(rect);
         int numberOfRows = this.numberOfRows(url);
         this.readCsv(url, group, numberOfRows);
         Scene scene = new Scene(group, 330, 330);
